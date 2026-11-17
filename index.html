@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>祭 NIGHT PARADE</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+<!-- Scene layer: shakes (STYLE §3.3). The HUD below is a separate layer and never moves. -->
+<div id="scene">
+  <canvas id="bg"></canvas>
+  <div id="boardWrap"><canvas id="board"></canvas></div>
+  <canvas id="stage"></canvas>
+</div>
+
+<aside class="hud left">
+  <!-- STYLE §6 title lockup, scaled as one unit (96px badge minimum) -->
+  <div class="logo">
+    <div class="mon">祭</div>
+    <div class="words"><span class="w" data-t="NIGHT">NIGHT</span><span class="w b" data-t="PARADE">PARADE</span></div>
+  </div>
+  <div class="tube"></div>
+  <div class="tag">ネオン祭りパチンコ</div>
+
+  <section class="panel">
+    <dl class="stats">
+      <dt>持ち玉 BALLS</dt><dd id="balls" class="big">0</dd>
+      <dt>回転数 SPINS</dt><dd id="spins">0</dd>
+      <dt>大当たり JACKPOTS</dt><dd id="jackpots">0</dd>
+      <dt>確率 ODDS</dt><dd id="rate">1/300</dd>
+    </dl>
+  </section>
+
+  <section class="panel" id="fever" hidden>
+    <div class="chip gold">FEVER フィーバー</div>
+    <div class="chain"><span class="chainLabel">連チャン</span><span class="chainX">×</span><span id="chain" class="chainNum">1</span></div>
+    <div class="leftRow">残り <b id="left">10</b> 回</div>
+  </section>
+</aside>
+
+<aside class="hud right">
+  <section class="panel">
+    <h2>保留 HOLD</h2>
+    <div class="holds">
+      <i id="now" class="slot empty now"></i>
+      <span class="sep"></span>
+      <i id="h0" class="slot empty"></i><i id="h1" class="slot empty"></i><i id="h2" class="slot empty"></i><i id="h3" class="slot empty"></i>
+    </div>
+    <p class="legend"><span class="t-green">緑</span> &lt; <span class="t-blue">青</span> &lt; <span class="t-red">赤</span> &lt; <span class="t-gold">金</span> &lt; <span class="t-rainbow">虹</span></p>
+  </section>
+
+  <section class="panel">
+    <h2>発射 POWER</h2>
+    <div class="meter"><div id="meterFill"></div><div id="meterMark"></div></div>
+    <div class="buttons">
+      <button id="btnLaunch" class="btn hi" type="button">打つ LAUNCH</button>
+      <button id="btnAuto" class="btn" type="button">AUTO</button>
+      <button id="btnSound" class="btn on" type="button">♪ ON</button>
+      <button id="btnRefill" class="btn off" type="button" disabled>+250 玉</button>
+    </div>
+    <p class="help">Hold <kbd>Space</kbd> / the button / the board to charge, release to launch.<br><kbd>A</kbd> auto-play · <kbd>M</kbd> mute</p>
+  </section>
+</aside>
+
+<div id="toast"></div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
